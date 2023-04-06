@@ -1,19 +1,13 @@
 package models
 
 import (
-	// "database/sql"
 	"encoding/json"
 	"fmt"
 	"log"
 	"strconv"
 
-	// "test6/config"
-	// "test6/db"
-
 	"github.com/gin-gonic/gin"
 )
-
-// var Db *sql.DB
 
 type User struct {
 	ID       int
