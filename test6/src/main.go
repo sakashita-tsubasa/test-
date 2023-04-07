@@ -2,7 +2,7 @@ package main
 
 import (
 	"test6/app/models"
-
+	// "test6/db"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )

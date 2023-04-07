@@ -6,6 +6,8 @@ import (
 	"log"
 	"strconv"
 
+	"test6/db"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -19,14 +21,13 @@ type User struct {
 }
 
 func (u *User) createUser() error {
-
 	cmd := `insert into users (
 		name,
 		birthday,
 		age,
 		height,
 		weight) values (?, ?, ?, ?, ?)`
-	_, err := Db.Exec(cmd,
+	_, err := db.Db.Exec(cmd,
 		u.Name,
 		u.BirthDay,
 		u.Age,
@@ -82,7 +83,7 @@ func getUser(id string, user *User) error {
 
 	var err error
 	cmd := `select * from users where id = ?`
-	err = Db.QueryRow(cmd, id).Scan(
+	err = db.Db.QueryRow(cmd, id).Scan(
 		&user.ID,
 		&user.Name,
 		&user.BirthDay,
@@ -120,7 +121,7 @@ func (u *User) updateUser() error {
 
 	var err error
 	cmd := `update users set name = ?, birthday = ?, age = ?, height = ?, weight = ? where id = ?`
-	_, err = Db.Exec(cmd, u.Name, u.BirthDay, u.Age, u.Height, u.Weight, u.ID)
+	_, err = db.Db.Exec(cmd, u.Name, u.BirthDay, u.Age, u.Height, u.Weight, u.ID)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -169,7 +170,7 @@ func (u *User) deleteUser(id string) error {
 
 	var err error
 	cmd := `delete from users where id = ?`
-	_, err = Db.Exec(cmd, u.ID)
+	_, err = db.Db.Exec(cmd, u.ID)
 	if err != nil {
 		log.Fatalln(err)
 	}

@@ -7,8 +7,6 @@ import (
 	"log"
 	"test6/config"
 
-	// "github.com/gin-gonic/gin"
-
 	_ "github.com/mattn/go-sqlite3"
 )
 
@@ -37,9 +35,5 @@ func init() {
 	if err != nil {
 		log.Fatalf("Error creating table: %v", err)
 	}
-	// return nil
-}
 
-// func Init(c *gin.Context) {
-// 	init()
-// }
+}
