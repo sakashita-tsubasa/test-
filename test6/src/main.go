@@ -2,7 +2,6 @@ package main
 
 import (
 	"test6/app/models"
-	// "test6/db"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
@@ -23,16 +22,10 @@ func main() {
 	{
 		v1.POST("/create", models.Create)
 		v1.GET("/get/:id", models.Get)
-		// v1.PUT("/update/:id", models.Update)
 		v1.PUT("/update", models.Update)
 		v1.DELETE("/delete/:id", models.Delete)
-		// v2.POST("/init", db.Init)
 	}
 
-	// v2 := router.Group("/api/v2")
-	// {
-	// 	v2.POST("/init", db.Init)
-	// }
-
 	router.Run(":8080")
+	
 }

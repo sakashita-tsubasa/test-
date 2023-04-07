@@ -21,6 +21,7 @@ type User struct {
 }
 
 func (u *User) createUser() error {
+
 	cmd := `insert into users (
 		name,
 		birthday,
